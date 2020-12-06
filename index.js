@@ -784,17 +784,30 @@ const buffer = fs.readFileSync(filepath)
 	conn.sendMessage(id , buffer , MessageType.audio);
 };
 }*/
-    if 'join':
-      if (args.length == 0) return aruga.reply(from, `Jika kalian ingin mengundang bot kegroup silahkan invite atau dengan\nketik ${prefix}join [link group]`, id)
-       let linkgrup = body.slice(6)
-      let islink = linkgrup.match(/(https:\/\/chat.whatsapp.com)/gi)
-     let chekgrup = await aruga.inviteInfo(linkgrup)
-     if (!islink) return aruga.reply(from, 'Maaf link group-nya salah! silahkan kirim link yang benar', id)
-      if (isOwnerBot) {
-           await aruga.joinGroupViaLink(linkgrup)
+     if 'join`:
+         if (args.length == 0) return aruga.reply(from, `Jika kalian ingin mengundang bot kegroup silahkan invite atau dengan\nketik ${prefix}join [link group]`, id)
+         let linkgrup = body.slice(6)
+         let islink = linkgrup.match(/(https:\/\/chat.whatsapp.com)/gi)
+         let chekgrup = await aruga.inviteInfo(linkgrup)
+         if (!islink) return aruga.reply(from, 'Maaf link group-nya salah! silahkan kirim link yang benar', id)
+            if (isOwnerBot) {
+                await aruga.joinGroupViaLink(linkgrup)
                       .then(async () => {
                           await aruga.sendText(from, 'Berhasil join grup via link!')
-                          await aruga.sendText(chekgrup.id, `Hai minna~, Im Craft BOT. To find out the commands on this bot type ${prefix}menu`)
+                          await aruga.sendText(chekgrup.id, `Hai minna~, Im Aruga BOT. To find out the commands on this bot type ${prefix}menu`)
+                      })
+            } else {
+                let cgrup = await aruga.getAllGroups()
+                if (cgrup.length > groupLimit) return aruga.reply(from, `Sorry, the group on this bot is full\nMax Group is: ${groupLimit}`, id)
+                if (cgrup.size < memberLimit) return aruga.reply(from, `Sorry, BOT wil not join if the group members do not exceed ${memberLimit} people`, id)
+                await aruga.joinGroupViaLink(linkgrup)
+                      .then(async () =>{
+                          await aruga.reply(from, 'Berhasil join grup via link!', id)
+                      })
+                      .catch(() => {
+                          aruga.reply(from, 'Gagal!', id)
+                      })
+            } 
     // Group Commands (group admin only)
 	    case 'add':
             if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
