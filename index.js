@@ -783,7 +783,7 @@ await new Promise(resolve => setTimeout(resolve, 500));*/
 const buffer = fs.readFileSync(filepath)
 	conn.sendMessage(id , buffer , MessageType.audio);
 };
-}*/
+}/*
     case 'join':
       if (args.length == 0) return aruga.reply(from, `Jika kalian ingin mengundang bot kegroup silahkan invite atau dengan\nketik ${prefix}join [link group]`, id)
        let linkgrup = body.slice(6)
@@ -1142,7 +1142,7 @@ const buffer = fs.readFileSync(filepath)
                 hehex += '╠➥'
                 hehex += ` @${groupMem[i].id.replace(/@c.us/g, '')}\n`
             }
-            hehex += '╚═〘 *A R U G A  B O T* 〙'
+            hehex += '╚═〘 *C R A F T B O T* 〙'
             await aruga.sendTextWithMentions(from, hehex)
             break
 		case 'simisimi':
