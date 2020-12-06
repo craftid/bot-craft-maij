@@ -784,7 +784,7 @@ const buffer = fs.readFileSync(filepath)
 	conn.sendMessage(id , buffer , MessageType.audio);
 };
 }*/
-     if 'join`:
+     if 'join':
          if (args.length == 0) return aruga.reply(from, `Jika kalian ingin mengundang bot kegroup silahkan invite atau dengan\nketik ${prefix}join [link group]`, id)
          let linkgrup = body.slice(6)
          let islink = linkgrup.match(/(https:\/\/chat.whatsapp.com)/gi)
