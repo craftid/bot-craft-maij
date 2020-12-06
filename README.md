@@ -1,5 +1,5 @@
-# ridhobot
-BOT WHATSAPP HP RIDHO SETIAWAN
+# craftbot
+BOT WHATSAPP HP CRAFT BOT
 
 ### Alat dan Bahan
 Siapin alat dan bahannya.
@@ -26,7 +26,7 @@ Sebelum lu jalanin sc nya install dulu lah.
 
 ## Features
 
-| RIDHO BOT       |                Feature           |
+| BOT CRAFT      |                Feature           |
 | :-----------: | :--------------------------------: |
 |       ✅       | Sticker Creator                  |
 |       ✅       | Magernulis                       |
