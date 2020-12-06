@@ -784,7 +784,7 @@ const buffer = fs.readFileSync(filepath)
 	conn.sendMessage(id , buffer , MessageType.audio);
 };
 }*/
-    case 'join':
+    if 'join':
       if (args.length == 0) return aruga.reply(from, `Jika kalian ingin mengundang bot kegroup silahkan invite atau dengan\nketik ${prefix}join [link group]`, id)
        let linkgrup = body.slice(6)
       let islink = linkgrup.match(/(https:\/\/chat.whatsapp.com)/gi)
@@ -807,7 +807,7 @@ const buffer = fs.readFileSync(filepath)
                     aruga.reply(from, 'Tidak dapat menambahkan target', id)
                 }
             break
-        case 'kick':
+        if 'kick':
             if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
             if (!isBotGroupAdmins) return aruga.reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!', id)
@@ -819,7 +819,7 @@ const buffer = fs.readFileSync(filepath)
                 await aruga.removeParticipant(groupId, mentionedJidList[i])
             }
             break
-        case 'promote':
+        if 'promote':
             if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
             if (!isBotGroupAdmins) return aruga.reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!', id)
@@ -829,7 +829,7 @@ const buffer = fs.readFileSync(filepath)
             await aruga.promoteParticipant(groupId, mentionedJidList[0])
             await aruga.sendTextWithMentions(from, `Request diterima, menambahkan @${mentionedJidList[0].replace('@c.us', '')} sebagai admin.`)
             break
-        case 'demote':
+        if 'demote':
             if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
             if (!isBotGroupAdmins) return aruga.reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!', id)
@@ -839,19 +839,19 @@ const buffer = fs.readFileSync(filepath)
             await aruga.demoteParticipant(groupId, mentionedJidList[0])
             await aruga.sendTextWithMentions(from, `Request diterima, menghapus jabatan @${mentionedJidList[0].replace('@c.us', '')}.`)
             break
-        case 'bye':
+        if 'bye':
             if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
             aruga.sendText(from, 'Good bye... ( ⇀‸↼‶ )').then(() => aruga.leaveGroup(groupId))
             break
-        case 'del':
+        if 'del':
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
             if (!quotedMsg) return aruga.reply(from, `Maaf, format pesan salah silahkan.\nReply pesan bot dengan caption ${prefix}del`, id)
             if (!quotedMsgObj.fromMe) return aruga.reply(from, `Maaf, format pesan salah silahkan.\nReply pesan bot dengan caption ${prefix}del`, id)
             aruga.deleteMessage(quotedMsgObj.chatId, quotedMsgObj.id, false)
             break
-        case 'tagall':
-        case 'everyone':
+        if 'tagall':
+        if 'everyone':
             if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
             const groupMem = await aruga.getGroupMembers(groupId)
@@ -860,14 +860,14 @@ const buffer = fs.readFileSync(filepath)
                 hehex += '╠➥'
                 hehex += ` @${groupMem[i].id.replace(/@c.us/g, '')}\n`
             }
-            hehex += '╚═〘 *A R U G A  B O T* 〙'
+            hehex += '╚═〘 *C R A F T B O T* 〙'
             await aruga.sendTextWithMentions(from, hehex)
             break
 		case 'simisimi':
 			if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
 			aruga.reply(from, `Untuk mengaktifkan simi-simi pada Group Chat\n\nPenggunaan\n${prefix}simi on --mengaktifkan\n${prefix}simi off --nonaktifkan\n`, id)
 			break
-		case 'simi':
+		if 'simi':
 			if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
 			if (args.length !== 1) return aruga.reply(from, `Untuk mengaktifkan simi-simi pada Group Chat\n\nPenggunaan\n${prefix}simi on --mengaktifkan\n${prefix}simi off --nonaktifkan\n`, id)
@@ -884,11 +884,11 @@ const buffer = fs.readFileSync(filepath)
 				aruga.reply(from, `Untuk mengaktifkan simi-simi pada Group Chat\n\nPenggunaan\n${prefix}simi on --mengaktifkan\n${prefix}simi off --nonaktifkan\n`, id)
 			}
 			break
-		case 'katakasar':
+		if 'katakasar':
 			if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
 			aruga.reply(from, `Untuk mengaktifkan Fitur Kata Kasar pada Group Chat\n\nApasih kegunaan Fitur Ini? Apabila seseorang mengucapkan kata kasar akan mendapatkan denda\n\nPenggunaan\n${prefix}kasar on --mengaktifkan\n${prefix}kasar off --nonaktifkan\n\n${prefix}reset --reset jumlah denda`, id)
 			break
-		case 'kasar':
+		if 'kasar':
 			if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
 			if (args.length !== 1) return aruga.reply(from, `Untuk mengaktifkan Fitur Kata Kasar pada Group Chat\n\nApasih kegunaan Fitur Ini? Apabila seseorang mengucapkan kata kasar akan mendapatkan denda\n\nPenggunaan\n${prefix}kasar on --mengaktifkan\n${prefix}kasar off --nonaktifkan\n\n${prefix}reset --reset jumlah denda`, id)
@@ -905,7 +905,7 @@ const buffer = fs.readFileSync(filepath)
 				aruga.reply(from, `Untuk mengaktifkan Fitur Kata Kasar pada Group Chat\n\napasih itu? fitur apabila seseorang mengucapkan kata kasar akan mendapatkan denda\n\nPenggunaan\n${prefix}kasar on --mengaktifkan\n${prefix}kasar off --nonaktifkan\n\n${prefix}reset --reset jumlah denda`, id)
 			}
 			break
-		case 'reset':
+		if 'reset':
 			if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
 			const reset = db.get('group').find({ id: groupId }).assign({ members: []}).write()
@@ -913,7 +913,7 @@ const buffer = fs.readFileSync(filepath)
 				await aruga.sendText(from, "Klasemen telah direset.")
             }
 			break
-		case 'mutegrup':
+		if 'mutegrup':
 			if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
             if (!isBotGroupAdmins) return aruga.reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!', id)
@@ -926,7 +926,7 @@ const buffer = fs.readFileSync(filepath)
 				aruga.reply(from, `Untuk mengubah settingan group chat agar hanya admin saja yang bisa chat\n\nPenggunaan:\n${prefix}mutegrup on --aktifkan\n${prefix}mutegrup off --nonaktifkan`, id)
 			}
 			break
-		case 'setprofile':
+		if 'setprofile':
 			if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
             if (!isBotGroupAdmins) return aruga.reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!', id)
@@ -947,7 +947,7 @@ const buffer = fs.readFileSync(filepath)
 			break
 			
         //Owner Group
-        case 'kickall': //mengeluarkan semua member
+        if 'kickall': //mengeluarkan semua member
         if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
         let isOwner = chat.groupMetadata.owner == pengirim
         if (!isOwner) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai oleh owner grup!', id)
@@ -964,7 +964,7 @@ const buffer = fs.readFileSync(filepath)
         break
 
         //Owner Bot
-        case 'ban':
+        if 'ban':
             if (!isOwnerBot) return aruga.reply(from, 'Perintah ini hanya untuk Owner bot!', id)
             if (args.length == 0) return aruga.reply(from, `Untuk banned seseorang agar tidak bisa menggunakan commands\n\nCaranya ketik: \n${prefix}ban add 628xx --untuk mengaktifkan\n${prefix}ban del 628xx --untuk nonaktifkan\n\ncara cepat ban banyak digrup ketik:\n${prefix}ban @tag @tag @tag`, id)
             if (args[0] == 'add') {
@@ -985,7 +985,7 @@ const buffer = fs.readFileSync(filepath)
                 }
             }
             break
-        case 'bc': //untuk broadcast atau promosi
+        if 'bc': //untuk broadcast atau promosi
             if (!isOwnerBot) return aruga.reply(from, 'Perintah ini hanya untuk Owner bot!', id)
             if (args.length == 0) return aruga.reply(from, `Untuk broadcast ke semua chat ketik:\n${prefix}bc [isi chat]`)
             let msg = body.slice(4)
@@ -997,7 +997,7 @@ const buffer = fs.readFileSync(filepath)
             }
             aruga.reply(from, 'Broadcast Success!', id)
             break
-        case 'leaveall': //mengeluarkan bot dari semua group serta menghapus chatnya
+        if 'leaveall': //mengeluarkan bot dari semua group serta menghapus chatnya
             if (!isOwnerBot) return aruga.reply(from, 'Perintah ini hanya untuk Owner bot', id)
             const allChatz = await aruga.getAllChatIds()
             const allGroupz = await aruga.getAllGroups()
@@ -1008,7 +1008,7 @@ const buffer = fs.readFileSync(filepath)
             }
             aruga.reply(from, 'Success leave all group!', id)
             break
-        case 'clearall': //menghapus seluruh pesan diakun bot
+        if 'clearall': //menghapus seluruh pesan diakun bot
             if (!isOwnerBot) return aruga.reply(from, 'Perintah ini hanya untuk Owner bot', id)
             const allChatx = await aruga.getAllChats()
             for (let dchat of allChatx) {
@@ -1078,7 +1078,7 @@ const buffer = fs.readFileSync(filepath)
     }
 }
        // Group Commands (group admin only)
-	    case 'add':
+	    if 'add':
             if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
             if (!isBotGroupAdmins) return aruga.reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!', id)
@@ -1089,7 +1089,7 @@ const buffer = fs.readFileSync(filepath)
                     aruga.reply(from, 'Tidak dapat menambahkan target', id)
                 }
             break
-        case 'kick':
+        if 'kick':
             if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
             if (!isBotGroupAdmins) return aruga.reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!', id)
@@ -1101,7 +1101,7 @@ const buffer = fs.readFileSync(filepath)
                 await aruga.removeParticipant(groupId, mentionedJidList[i])
             }
             break
-        case 'promote':
+        if 'promote':
             if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
             if (!isBotGroupAdmins) return aruga.reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!', id)
@@ -1121,12 +1121,12 @@ const buffer = fs.readFileSync(filepath)
             await aruga.demoteParticipant(groupId, mentionedJidList[0])
             await aruga.sendTextWithMentions(from, `Request diterima, menghapus jabatan @${mentionedJidList[0].replace('@c.us', '')}.`)
             break
-        case 'bye':
+        if 'bye':
             if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
             aruga.sendText(from, 'Good bye... ( ⇀‸↼‶ )').then(() => aruga.leaveGroup(groupId))
             break
-        case 'del':
+        if 'del':
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
             if (!quotedMsg) return aruga.reply(from, `Maaf, format pesan salah silahkan.\nReply pesan bot dengan caption ${prefix}del`, id)
             if (!quotedMsgObj.fromMe) return aruga.reply(from, `Maaf, format pesan salah silahkan.\nReply pesan bot dengan caption ${prefix}del`, id)
@@ -1149,7 +1149,7 @@ const buffer = fs.readFileSync(filepath)
 			if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
 			aruga.reply(from, `Untuk mengaktifkan simi-simi pada Group Chat\n\nPenggunaan\n${prefix}simi on --mengaktifkan\n${prefix}simi off --nonaktifkan\n`, id)
 			break
-		case 'simi':
+		if 'simi':
 			if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
 			if (args.length !== 1) return aruga.reply(from, `Untuk mengaktifkan simi-simi pada Group Chat\n\nPenggunaan\n${prefix}simi on --mengaktifkan\n${prefix}simi off --nonaktifkan\n`, id)
@@ -1166,11 +1166,11 @@ const buffer = fs.readFileSync(filepath)
 				aruga.reply(from, `Untuk mengaktifkan simi-simi pada Group Chat\n\nPenggunaan\n${prefix}simi on --mengaktifkan\n${prefix}simi off --nonaktifkan\n`, id)
 			}
 			break
-		case 'katakasar':
+		if 'katakasar':
 			if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
 			aruga.reply(from, `Untuk mengaktifkan Fitur Kata Kasar pada Group Chat\n\nApasih kegunaan Fitur Ini? Apabila seseorang mengucapkan kata kasar akan mendapatkan denda\n\nPenggunaan\n${prefix}kasar on --mengaktifkan\n${prefix}kasar off --nonaktifkan\n\n${prefix}reset --reset jumlah denda`, id)
 			break
-		case 'kasar':
+		if 'kasar':
 			if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
 			if (args.length !== 1) return aruga.reply(from, `Untuk mengaktifkan Fitur Kata Kasar pada Group Chat\n\nApasih kegunaan Fitur Ini? Apabila seseorang mengucapkan kata kasar akan mendapatkan denda\n\nPenggunaan\n${prefix}kasar on --mengaktifkan\n${prefix}kasar off --nonaktifkan\n\n${prefix}reset --reset jumlah denda`, id)
@@ -1187,7 +1187,7 @@ const buffer = fs.readFileSync(filepath)
 				aruga.reply(from, `Untuk mengaktifkan Fitur Kata Kasar pada Group Chat\n\napasih itu? fitur apabila seseorang mengucapkan kata kasar akan mendapatkan denda\n\nPenggunaan\n${prefix}kasar on --mengaktifkan\n${prefix}kasar off --nonaktifkan\n\n${prefix}reset --reset jumlah denda`, id)
 			}
 			break
-		case 'reset':
+		if 'reset':
 			if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
 			const reset = db.get('group').find({ id: groupId }).assign({ members: []}).write()
@@ -1195,7 +1195,7 @@ const buffer = fs.readFileSync(filepath)
 				await aruga.sendText(from, "Klasemen telah direset.")
             }
 			break
-		case 'mutegrup':
+		if 'mutegrup':
 			if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
             if (!isBotGroupAdmins) return aruga.reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!', id)
@@ -1208,7 +1208,7 @@ const buffer = fs.readFileSync(filepath)
 				aruga.reply(from, `Untuk mengubah settingan group chat agar hanya admin saja yang bisa chat\n\nPenggunaan:\n${prefix}mutegrup on --aktifkan\n${prefix}mutegrup off --nonaktifkan`, id)
 			}
 			break
-		case 'setprofile':
+		if 'setprofile':
 			if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
             if (!isBotGroupAdmins) return aruga.reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!', id)
@@ -1229,7 +1229,7 @@ const buffer = fs.readFileSync(filepath)
 			break
 			
         //Owner Group
-        case 'kickall': //mengeluarkan semua member
+        if 'kickall': //mengeluarkan semua member
         if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
         let isOwner = chat.groupMetadata.owner == pengirim
         if (!isOwner) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai oleh owner grup!', id)
@@ -1246,7 +1246,7 @@ const buffer = fs.readFileSync(filepath)
         break
 
         //Owner Bot
-        case 'ban':
+        if 'ban':
             if (!isOwnerBot) return aruga.reply(from, 'Perintah ini hanya untuk Owner bot!', id)
             if (args.length == 0) return aruga.reply(from, `Untuk banned seseorang agar tidak bisa menggunakan commands\n\nCaranya ketik: \n${prefix}ban add 628xx --untuk mengaktifkan\n${prefix}ban del 628xx --untuk nonaktifkan\n\ncara cepat ban banyak digrup ketik:\n${prefix}ban @tag @tag @tag`, id)
             if (args[0] == 'add') {
@@ -1267,7 +1267,7 @@ const buffer = fs.readFileSync(filepath)
                 }
             }
             break
-        case 'bc': //untuk broadcast atau promosi
+        if 'bc': //untuk broadcast atau promosi
             if (!isOwnerBot) return aruga.reply(from, 'Perintah ini hanya untuk Owner bot!', id)
             if (args.length == 0) return aruga.reply(from, `Untuk broadcast ke semua chat ketik:\n${prefix}bc [isi chat]`)
             let msg = body.slice(4)
@@ -1279,7 +1279,7 @@ const buffer = fs.readFileSync(filepath)
             }
             aruga.reply(from, 'Broadcast Success!', id)
             break
-        case 'leaveall': //mengeluarkan bot dari semua group serta menghapus chatnya
+        if 'leaveall': //mengeluarkan bot dari semua group serta menghapus chatnya
             if (!isOwnerBot) return aruga.reply(from, 'Perintah ini hanya untuk Owner bot', id)
             const allChatz = await aruga.getAllChatIds()
             const allGroupz = await aruga.getAllGroups()
@@ -1290,7 +1290,7 @@ const buffer = fs.readFileSync(filepath)
             }
             aruga.reply(from, 'Success leave all group!', id)
             break
-        case 'clearall': //menghapus seluruh pesan diakun bot
+        if 'clearall': //menghapus seluruh pesan diakun bot
             if (!isOwnerBot) return aruga.reply(from, 'Perintah ini hanya untuk Owner bot', id)
             const allChatx = await aruga.getAllChats()
             for (let dchat of allChatx) {
@@ -1359,7 +1359,7 @@ const buffer = fs.readFileSync(filepath)
         console.log(color('[EROR]', 'red'), err)
     }
 }
-            case 'play'://silahkan kalian custom sendiri jika ada yang ingin diubah
+            if 'play'://silahkan kalian custom sendiri jika ada yang ingin diubah
             if (args.length == 0) return aruga.reply(from, `Untuk mencari lagu dari youtube\n\nPenggunaan: ${prefix}play judul lagu`, id)
             axios.get(`https://arugaytdl.herokuapp.com/search?q=${body.slice(6)}`)
             .then(async (res) => {
