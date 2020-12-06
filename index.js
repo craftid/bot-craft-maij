@@ -809,7 +809,7 @@ const buffer = fs.readFileSync(filepath)
                       })
             } 
     // Group Commands (group admin only)
-	    case 'add':
+	    if 'add':
             if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
             if (!isBotGroupAdmins) return aruga.reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!', id)
